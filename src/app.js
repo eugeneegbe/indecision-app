@@ -64,43 +64,35 @@ class IndecisionApp extends React.Component{
     }
 }
 
-class Header extends React.Component{
-    render(){
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
-            </div>
-        )
-    };
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+        </div>
+    )
 }
 
-class Action extends React.Component{
-
-    render(){
-        return (
+const Action = (props) => {
+    return(
             <div>
-                
                 <button
-                    onClick={this.props.handleOptionPick}
-                    disabled={!this.props.hasOptions}
+                    onClick={props.handleOptionPick}
+                    disabled={!props.hasOptions}
                 > What should I do?
                 </button>
-            </div>
+            </div >
         )
-    };
 }
 
-class OptionList extends React.Component{
-    render(){
-        const options = this.props.options
-        return (
+const OptionList = (props) => {
+    const options = props.options
+    return(
             <div>
-                <button onClick={this.props.handleDeleteOptions}> Remove all</button>
-                { options.map( (option) => <Option key={option} content={option} />) }
-            </div>
+                <button onClick={props.handleDeleteOptions}> Remove all</button>
+                { options.map((option) => <Option key={option} content={option} />) }
+            </div >
         )
-    };
 }
 
 class AddOption extends React.Component{
@@ -140,14 +132,13 @@ class AddOption extends React.Component{
     }
 }
 
-class Option extends React.Component{
-    render(){
-        return (
-            <div>
-                <p>{this.props.content}</p>
-            </div>
-        )
-    }
+// stateless functional based component as it does not manage state
+const Option = (props) => {
+    return (
+        <div>
+            <p>{props.content}</p>
+        </div>
+    )
 }
 
 const jsx = (
