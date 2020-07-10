@@ -27,10 +27,17 @@ class IndecisionApp extends React.Component{
     }
 
     handleAddOption(option){
+        //check if option exists or option provided is empty
+        if( this.state.options.indexOf(option) > -1 ){ //option already exists
+            return 'This option already exists';
+        } else if (!option) { //empty string was provided | no option provided
+            return 'Please enter a valid option';
+        }
+
         this.setState( (prevState) => {
             return{
                 options: prevState.options.concat(option)
-            }
+            };
         });
     }
 
@@ -101,20 +108,29 @@ class AddOption extends React.Component{
         super(props);
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.state = {
+            feedback: undefined
+        };
     }
 
     handleFormSubmit(e) {
         e.preventDefault();
         const option = e.target.elements.option.value.trim() //call trim to eliminate unwanted spaces
 
-        if (option) {
-            this.props.handleAddOption(option)
-        }
+        // since addOption listens to feedback we need to update it's state
+        const feedback = this.props.handleAddOption(option);
+        console.log(feedback)
+        this.setState( () => {
+            return {
+                feedback: feedback
+            }
+        });
     }
 
     render(){
         return(
             <div>
+                {this.state.feedback && <small>{this.state.feedback}</small>}
                 <form onSubmit={this.handleFormSubmit}>
                     <input type='text' name='option'></input>
                     <button>Add option</button>

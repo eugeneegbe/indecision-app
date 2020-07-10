@@ -46,6 +46,15 @@ var IndecisionApp = function (_React$Component) {
     }, {
         key: 'handleAddOption',
         value: function handleAddOption(option) {
+            //check if option exists or option provided is empty
+            if (this.state.options.indexOf(option) > -1) {
+                //option already exists
+                return 'This option already exists';
+            } else if (!option) {
+                //empty string was provided | no option provided
+                return 'Please enter a valid option';
+            }
+
             this.setState(function (prevState) {
                 return {
                     options: prevState.options.concat(option)
@@ -182,6 +191,9 @@ var AddOption = function (_React$Component5) {
         var _this5 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
 
         _this5.handleFormSubmit = _this5.handleFormSubmit.bind(_this5);
+        _this5.state = {
+            feedback: undefined
+        };
         return _this5;
     }
 
@@ -191,9 +203,14 @@ var AddOption = function (_React$Component5) {
             e.preventDefault();
             var option = e.target.elements.option.value.trim(); //call trim to eliminate unwanted spaces
 
-            if (option) {
-                this.props.handleAddOption(option);
-            }
+            // since addOption listens to feedback we need to update it's state
+            var feedback = this.props.handleAddOption(option);
+            console.log(feedback);
+            this.setState(function () {
+                return {
+                    feedback: feedback
+                };
+            });
         }
     }, {
         key: 'render',
@@ -201,6 +218,11 @@ var AddOption = function (_React$Component5) {
             return React.createElement(
                 'div',
                 null,
+                this.state.feedback && React.createElement(
+                    'small',
+                    null,
+                    this.state.feedback
+                ),
                 React.createElement(
                     'form',
                     { onSubmit: this.handleFormSubmit },
