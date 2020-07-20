@@ -5,34 +5,25 @@ import Action from './Action';
 import Header from './Header';
 
 export default class IndecisionApp extends React.Component{
-    constructor(props){
-        super(props);
+    state = {
+        options: []
+    };
 
-        // bind all class actions to the current instance
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handleOptionPick = this.handleOptionPick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-
-        this.state = {
-            options: []
-        };
-    }
-
-    handleDeleteOptions() {
+    handleDeleteOptions = () => {
         this.setState( () => {
             return {
                 options: []
             }
         });
-    }
+    };
 
-    handleOptionPick(){
+    handleOptionPick = () => {
         const random = Math.floor(Math.random() * this.state.options.length)
         const randomOption = this.state.options[random]
         alert(randomOption)
-    }
+    };
 
-    handleAddOption(option){
+    handleAddOption = (option) =>{
         //check if option exists or option provided is empty
         if( this.state.options.indexOf(option) > -1 ){ //option already exists
             return 'This option already exists';
@@ -45,7 +36,7 @@ export default class IndecisionApp extends React.Component{
                 options: prevState.options.concat(option)
             };
         });
-    }
+    };
 
     render(){
         const appTitle = 'Indecision';
