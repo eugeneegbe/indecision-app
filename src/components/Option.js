@@ -3,8 +3,9 @@ import React from 'react';
 // stateless functional based component as it does not manage state
 const Option = (props) => {
     return (
-        <div>
-            <p>{props.content} <button className='button button--link'>remove</button></p>
+        <div className='option'>
+            <p className='option__text'>{props.count}. {props.content}</p>
+            <button className='button button--link'>remove</button>
         </div>
     )
 }
