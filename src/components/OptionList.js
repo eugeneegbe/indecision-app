@@ -12,7 +12,12 @@ const OptionList = (props) => {
                         Remove all
                     </button>
                 </div>
-                { options.map((option) => <Option key={option} content={option} />) }
+                {props.options.length === 0 && <p className='widget-message'>
+                    Please add an option to get started!</p>}
+                <ol>
+                    { options.map((option) => <li><Option key={option} content={option} /></li>) }
+                </ol>
+                
             </div >
         )
 }
