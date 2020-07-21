@@ -6,7 +6,7 @@
     padding: 2.4rem;
     width: 100%;
     font-size: $xl-size;
-    margin-bottom: $xl-size;
+    margin-bottom: $m-size;
     font-weight: bold;
 }
 
@@ -28,4 +28,11 @@
     color: $off-white;
     padding: 0;
     border: none;
+}
+
+// devices larger than 45rem
+@media (min-width: $desktop-breakpoint){
+    .big-button{
+        margin-bottom: $xl-size;
+    }
 }

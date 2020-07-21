@@ -57,7 +57,7 @@ export default class IndecisionApp extends React.Component{
         const subTitle = 'Put your life in the hands of a Computer';
 
         return(
-            <div className>
+            <div>
                 <Header title={appTitle} subtitle={subTitle}/>
                 <div className='container'>
                     <Action 
@@ -73,12 +73,11 @@ export default class IndecisionApp extends React.Component{
                             handleAddOption={this.handleAddOption}
                         />
                     </div>
-                    <OptionModal 
+                </div>
+                <OptionModal 
                         selectedOption={this.state.selectedOption} 
                         clearSelectedOption={this.clearSelectedOption}
                     />
-                </div>
-                
             </div>
         )
     }
