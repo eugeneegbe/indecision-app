@@ -4,7 +4,7 @@ import React from 'react';
 const Option = (props) => {
     return (
         <div>
-            <p>{props.content}</p>
+            <p>{props.content} <button className='button button--link'>remove</button></p>
         </div>
     )
 }

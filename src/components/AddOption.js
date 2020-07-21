@@ -24,7 +24,7 @@ export default class AddOption extends React.Component{
                 {this.state.feedback && <small>{this.state.feedback}</small>}
                 <form onSubmit={this.handleFormSubmit}>
                     <input type='text' name='option'></input>
-                    <button>Add option</button>
+                    <button className='button'>Add option</button>
                 </form>
             </div>
         )

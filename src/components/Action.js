@@ -4,6 +4,7 @@ const Action = (props) => {
     return(
             <div>
                 <button
+                    className='big-button'
                     onClick={props.handleOptionPick}
                     disabled={!props.hasOptions}
                 > What should I do?

@@ -5,7 +5,10 @@ const OptionList = (props) => {
     const options = props.options
     return(
             <div>
-                <button onClick={props.handleDeleteOptions}> Remove all</button>
+                <button className='button button--link'
+                onClick={props.handleDeleteOptions}>
+                    Remove all
+                </button>
                 { options.map((option) => <Option key={option} content={option} />) }
             </div >
         )
