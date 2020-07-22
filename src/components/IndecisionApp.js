@@ -44,6 +44,22 @@ export default class IndecisionApp extends React.Component{
         });
     };
 
+    removeItemOnce = (arr, value)  => {
+        var index = arr.indexOf(value);
+        if (index > -1) {
+            arr.splice(index, 1);
+        }
+        return arr;
+    }
+
+    handleDeleteOption = (optionText) => {
+        this.setState( (prevState) => {
+            return {
+                options: this.removeItemOnce(prevState.options, optionText)
+            };
+        });
+    }
+
     clearSelectedOption = () => {
         this.setState( () =>{
             return {
@@ -68,6 +84,7 @@ export default class IndecisionApp extends React.Component{
                         <OptionList 
                             options={this.state.options}
                             handleDeleteOptions={this.handleDeleteOptions}
+                            handleDeleteOption={this.handleDeleteOption}
                         />
                         <AddOption 
                             handleAddOption={this.handleAddOption}

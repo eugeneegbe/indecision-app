@@ -2,7 +2,7 @@ import React from 'react';
 import Option from './Option';
 
 const OptionList = (props) => {
-    const options = props.options
+    const options = props.options;
     return(
             <div>
                 <div className='widget-header'>
@@ -16,7 +16,10 @@ const OptionList = (props) => {
                 {props.options.length === 0 && <p className='widget-message'>
                     Please add an option to get started!</p>}
                     { options.map((option, index) =>
-                    <Option key={option} content={option} count={index + 1}/>) }                
+                                <Option key={option} content={option} count={index + 1}
+                                        handleDeleteOption={props.handleDeleteOption}
+                                />
+                    ) }
             </div >
         )
 }
